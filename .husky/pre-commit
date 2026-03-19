@@ -1,0 +1,14 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+cd infrastructure
+
+echo "Running terraform fmt..."
+terraform fmt -check -recursive || exit 1
+
+echo "Running terraform validate..."
+terraform init -backend=false > /dev/null
+terraform validate || exit 1
+
+echo "Running tflint..."
+tflint || exit 1

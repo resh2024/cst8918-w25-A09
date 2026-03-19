@@ -16,4 +16,5 @@ provider "azurerm" {
 resource "azurerm_resource_group" "test" {
   name     = "a09-test-rg"
   location = "Canada Central"
+  "des=""
 }
